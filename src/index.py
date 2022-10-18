@@ -14,9 +14,9 @@ def about():
 def write(registro):
     saludo = ''
     try:
-        saludo = open("src/data/archivo.txt", "a")
+        saludo = open("src\\data\\archivo.txt", "a")
     except:
-        saludo = open("src/data/archivo.txt", "w")
+        saludo = open("src\\data\\archivo.txt", "w")
     finally:
         saludo.write(registro)
         saludo.write("\n")
@@ -25,7 +25,7 @@ def write(registro):
 def read():
     data = []
     try:
-        archivo = open("src/data/archivo.txt")
+        archivo = open("src\\data\\archivo.txt")
         for linea in archivo:
             data.append(linea.split("#"))
     except:
