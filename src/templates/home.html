@@ -2,15 +2,39 @@
 
 {% block content %}
 <div class="jumbotron">
-    <h1 class="display-4">Welcome</h1>
-    <p class="lead">Here you can see our products</p>
+    <h1 class="display-4">Registro de Citas</h1>
     <hr class="my-4">
-    <ul>
-      {% for fruit in data %}
-        <li>{{ fruit }}</li>
-      {% endfor %}  
-      </ul>
+    
+    <h1>Registros:</h1>
+    
 
-    <a class="btn btn-primary btn-lg" href="#" role="button">See more</a>
+    <table class="table">
+
+      <thead class="thead-dark">
+        <tr>
+          <th>NOMBRE</th>
+          <th>TIPO DE TRABAJO</th>
+          <th>FECHA DE RETOQUE</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for fruit in data %}
+          <tr>
+            <td>{{ fruit[0] }}</td>
+            <td>{{ fruit[1] }}</td>
+            <td>{{ fruit[2] }}</td>
+          </tr>
+        {% endfor %}  
+      </tbody>
+    </table>
+      
+    <h1>Registrar Nuevo:</h1>
+    <form action="/forward/" method="post">
+      <input type="text" name="nombre" id="nombre" placeholder="Nombre">
+      <input type="text" name="tipoTrabajo" id="tipoTrabajo"  placeholder="Tipo Trabajo">
+      <input type="date" name="fechaRetoque" id="fechaRetoque" placeholder="Fecha Trabajo">
+      <button class="btn btn-primary btn-lg" name="forwardBtn" type="submit">Guardar</button>
+    </form>
+
   </div>
 {% endblock %}
