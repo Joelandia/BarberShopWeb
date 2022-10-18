@@ -12,16 +12,24 @@ def about():
     return render_template('about.html')
 
 def write(registro):
-    saludo = open("archivo.txt", "a")
-    saludo.write(registro)
-    saludo.write("\n")
-    saludo.close()
+    saludo = ''
+    try:
+        saludo = open("src/data/archivo.txt", "a")
+    except:
+        saludo = open("src/data/archivo.txt", "w")
+    finally:
+        saludo.write(registro)
+        saludo.write("\n")
+        saludo.close()
 
 def read():
-    archivo = open("archivo.txt")
     data = []
-    for linea in archivo:
-        data.append(linea.split("#"))
+    try:
+        archivo = open("src/data/archivo.txt")
+        for linea in archivo:
+            data.append(linea.split("#"))
+    except:
+        data = []
     return data
 
 @app.route("/forward/", methods=["POST"])
