@@ -5,7 +5,12 @@
     <h1 class="display-4">Welcome</h1>
     <p class="lead">Here you can see our products</p>
     <hr class="my-4">
-    <p>Products</p>
+    <ul>
+      {% for fruit in data %}
+        <li>{{ fruit }}</li>
+      {% endfor %}  
+      </ul>
+
     <a class="btn btn-primary btn-lg" href="#" role="button">See more</a>
   </div>
 {% endblock %}
