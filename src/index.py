@@ -11,6 +11,10 @@ def home():
 def about():
     return render_template('about.html')
 
+@app.route('/calendario')
+def calendario():
+    return render_template('calendario.html')
+
 def write(registro):
     saludo = ''
     try:

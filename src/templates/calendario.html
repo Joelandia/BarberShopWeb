@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <h1>Calendario</h1>
+    <br>
+    <nav aria-label="...">
+        <ul class="pagination">
+          <li class="page-item">
+            <a class="page-link" style="cursor: pointer;" onclick="general(-1)">Anterior</a>
+          </li>
+          <li class="page-item disabled">
+            <a class="page-link" >Semana</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" style="cursor: pointer;" onclick="general(1)">Siguiente</a>
+          </li>
+        </ul>
+      </nav>
+    <div id="body">
+
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script src="{{ url_for('static', filename='js/calendar.js')}}"></script>
+
+
+
+  {% endblock %}
