@@ -4,10 +4,16 @@ import psycopg2.extras
 
 app = Flask(__name__)
 
-DB_HOST = "localhost"
-DB_NAME = "app-b-shop"
-DB_USER = "postgres"
-DB_PASS = "56jo75eL"
+#DB_HOST = "localhost"
+#DB_NAME = "app-b-shop"
+#DB_USER = "postgres"
+#DB_PASS = "56jo75eL"
+
+
+DB_HOST = "ec2-3-219-135-162.compute-1.amazonaws.com"
+DB_NAME = "d5afjvtg7aoa83"
+DB_USER = "ckjtswazicufso"
+DB_PASS = "5474e1c4b8686d01f2adde3fc775cff99a2686b1ea21c54d93f61c069a7b0b11"
 
 conn = psycopg2.connect(dbname = DB_NAME, user = DB_USER, password = DB_PASS, host = DB_HOST)
 
