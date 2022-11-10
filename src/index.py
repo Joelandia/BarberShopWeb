@@ -1,10 +1,19 @@
 from flask import Flask, render_template, Response, request, redirect, url_for
+import psycopg2
+import psycopg2.extras
 
 app = Flask(__name__)
 
+DB_HOST = "localhost"
+DB_NAME = "app-b-shop"
+DB_USER = "postgres"
+DB_PASS = "56jo75eL"
+
+conn = psycopg2.connect(dbname = DB_NAME, user = DB_USER, password = DB_PASS, host = DB_HOST)
+
 @app.route('/')
 def home():
-    dataFile = read()
+    dataFile = readDB()
     return render_template('home.html', data = dataFile)
 
 @app.route('/about')
@@ -25,6 +34,19 @@ def write(registro):
         saludo.write(registro)
         saludo.write("\n")
         saludo.close()
+
+def readDB():
+    data = []
+    try:
+        cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+        query = "select * from clientes"
+        cur.execute(query)
+        list_clientes = cur.fetchall()
+        data = list_clientes
+        print(list_clientes)
+    except:
+        data = []
+    return data
 
 def read():
     data = []

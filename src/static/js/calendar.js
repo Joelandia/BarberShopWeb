@@ -109,6 +109,52 @@ function setDatosModal(nodo){
         }
     })
     titulo.innerHTML =  titulos[partes[1]] + "(" + fecha + ")" + " - " + horas[partes[0]]
+
+    
+    document.getElementById("modal-body").innerHTML = ''
+
+    let form = document.createElement("form")
+    form.setAttribute("action", "/forward/")
+    form.setAttribute("method", "post")
+
+    let nombre = document.createElement("input")
+    nombre.setAttribute("type", "text")
+    nombre.setAttribute("name", "nombre")
+    nombre.setAttribute("id", "nombre")
+    nombre.setAttribute("placeholder", "Nombre")
+    
+    let tipoTrabajo = document.createElement("input")
+    tipoTrabajo.setAttribute("type", "text")
+    tipoTrabajo.setAttribute("name", "tipoTrabajo")
+    tipoTrabajo.setAttribute("id", "tipoTrabajo")
+    tipoTrabajo.setAttribute("placeholder", "Tipo Trabajo")
+    
+    
+    let fechaRetoque = document.createElement("input")
+    fechaRetoque.setAttribute("type", "date")
+    fechaRetoque.setAttribute("name", "fechaRetoque")
+    fechaRetoque.setAttribute("id", "fechaRetoque")
+    fechaRetoque.setAttribute("placeholder", "Fecha Trabajo")
+    
+    let partesFecha = fecha.split("/")
+    fechaRetoque.value = partesFecha[2] + "-" + 
+        (partesFecha[1].length == 1? "0"+partesFecha[1]:partesFecha[1]) + "-" +
+        (partesFecha[0].length == 1? "0"+partesFecha[0]:partesFecha[0])
+
+    let boton = document.createElement("input")
+    boton.classList.add("btn")
+    boton.classList.add("btn-primary")
+    boton.classList.add("btn-lg")
+    boton.setAttribute("name", "forwardBtn")
+    boton.setAttribute("type", "submit")
+    boton.innerHTML = "Guardar"
+
+    form.appendChild(nombre)
+    form.appendChild(tipoTrabajo)
+    form.appendChild(fechaRetoque)
+    form.appendChild(boton)
+
+    document.getElementById("modal-body").appendChild(form)
 }
 
 llenaTabla()
